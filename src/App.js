@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { getUser } from "./state/actionCreators/user";
+import { getUser } from "./state/actions/userActions";
 
 import Profile from "./Profile";
 
