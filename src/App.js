@@ -1,50 +1,27 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
 import { getUser } from "./state/actions/userActions";
 
-import Profile from "./Profile";
+import Profile from "./components/user/Profile";
+import Counter from "./components/counter/Counter";
 
 const App = () => {
 	const [userid, setUserid] = useState(1);
 	const [showLoader, setShowLoader] = useState(false);
 	const dispatch = useDispatch();
-
-	// // PROMISE
-	// const getUserInfo = () => {
-	// 	console.log("before dispatch");
-	// 	setShowLoader(true);
-	// 	setTimeout(() => {
-	// 		axios.get(`https://jsonplaceholder.typicode.com/users/${userid}`).then((userResponse) => {
-	// 			dispatch({ type: "SET_NEW_USER", payload: { ...userResponse.data } });
-	// 		});
-	// 		setShowLoader(false);
-	// 		console.log("after dispatch");
-	// 	}, 3000);
-	// };
-
-	// // ASYNC AWAIT
-	// const getUserInfo = async () => {
-	// 	console.log("before dispatch");
-	// 	setShowLoader(true);
-	// 	setTimeout(async () => {
-	// 		const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${userid}`);
-	// 		const userData = await userResponse.data;
-	// 		dispatch({ type: "SET_NEW_USER", payload: { ...userData } });
-	// 		setShowLoader(false);
-	// 		console.log("after dispatch");
-	// 	}, 3000);
-	// };
-
-	//	calling action creator.
+	
 	const getUserInfo = () => {
 		setShowLoader(true);
 		dispatch(getUser(userid))
 			.then((res) => {
-				setShowLoader(false);
+				//	If required, do something with the returned data..
+				console.log(res);
 			})
 			.catch((err) => {
+				console.log(err);
+			})
+			.finally(() => {
 				setShowLoader(false);
 			});
 	};
@@ -59,9 +36,13 @@ const App = () => {
 				}}
 			/>
 			<h3>User id is {userid}</h3>
-			<button onClick={getUserInfo}>Get info</button>
+			<button onClick={getUserInfo}>Get user info</button>
 			<br />
 			{showLoader ? "loading..." : <Profile></Profile>}
+
+			<hr />
+
+			<Counter></Counter>
 		</div>
 	);
 };
