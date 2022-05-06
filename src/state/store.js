@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import { configureStore } from "@reduxjs/toolkit";
 
 import reducer from "./reducers/index";
-import thunk from "redux-thunk";
 
 // const store = createStore(reducer, applyMiddleware(thunk));  //  createStore is deprecated..
 

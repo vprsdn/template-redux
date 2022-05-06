@@ -1,6 +1,6 @@
 import actionTypes from "../actionTypes";
 
-const countReducer = (state = 0, action = {}) => {
+const counterReducer = (state = 0, action = {}) => {
 	switch (action.type) {
 		case actionTypes.counter.INCREASE_COUNT:
 			return state + action.payload.count;
@@ -10,4 +10,4 @@ const countReducer = (state = 0, action = {}) => {
 	}
 };
 
-export default countReducer;
+export default counterReducer;

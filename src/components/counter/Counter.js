@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { increaseCount } from "./../../state/actions/countActions";
+import { increaseCount } from "./../../state/actions/counterActions";
 
 const Counter = () => {
-	const countData = useSelector((state) => state.countData);
+	const counterData = useSelector((state) => state.counterData);
 	const dispatch = useDispatch();
 
 	const handleIncreaseCount = (count = 1) => {
@@ -12,7 +12,7 @@ const Counter = () => {
 	return (
 		<div>
 			<h2>Counter</h2>
-			<h3>{countData}</h3>
+			<h3>{counterData}</h3>
 			<button
 				onClick={() => {
 					handleIncreaseCount(1);
