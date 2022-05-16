@@ -12,4 +12,11 @@ const getUser = (userId) => {
 	};
 };
 
-export { getUser };
+const setUserId = (userId) => {
+	return {
+		type: actionTypes.user.SET_USER_ID,
+		payload: userId,
+	};
+};
+
+export { getUser, setUserId };

@@ -15,7 +15,7 @@ const Profile = () => {
 	return (
 		<div>
 			<h3>Profile</h3>
-			{userData.id ? <User userData={userData}></User> : "No data"}
+			{userData.userData?.id ? <User userData={userData.userData}></User> : "No data"}
 		</div>
 	);
 };

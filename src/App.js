@@ -1,22 +1,23 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { getUser } from "./state/actions/userActions";
+import { getUser, setUserId } from "./state/actions/userActions";
 
 import Profile from "./components/user/Profile";
 import Counter from "./components/counter/Counter";
 
 const App = () => {
-	const [userid, setUserid] = useState(1);
+	const userData = useSelector((state) => state.userData);
+	const userId = userData.userId;
 	const [showLoader, setShowLoader] = useState(false);
 	const dispatch = useDispatch();
-	
+
 	const getUserInfo = () => {
 		setShowLoader(true);
-		dispatch(getUser(userid))
+		dispatch(getUser(userId))
 			.then((res) => {
 				//	If required, do something with the returned data..
-				console.log(res);
+				// console.log(res);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -26,16 +27,14 @@ const App = () => {
 			});
 	};
 
+	const updateUserId = (ev) => {
+		dispatch(setUserId(ev.target.value));
+	};
+
 	return (
 		<div>
-			<input
-				type="text"
-				value={userid}
-				onChange={(e) => {
-					setUserid(e.target.value);
-				}}
-			/>
-			<h3>User id is {userid}</h3>
+			<input type="text" value={userId} onChange={updateUserId} />
+			<h3>User id is {userId}</h3>
 			<button onClick={getUserInfo}>Get user info</button>
 			<br />
 			{showLoader ? "loading..." : <Profile></Profile>}

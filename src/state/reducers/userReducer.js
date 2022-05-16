@@ -1,10 +1,16 @@
 import actionTypes from "../actionTypes";
 
-const userReducer = (state = {}, action = {}) => {
+const userReducer = (state = { userId: 1, userData: {} }, action = {}) => {
 	switch (action.type) {
 		case actionTypes.user.SET_NEW_USER:
 			return {
-				...action.payload,
+				...state,
+				userData: { ...action.payload },
+			};
+		case actionTypes.user.SET_USER_ID:
+			return {
+				...state,
+				userId: action.payload,
 			};
 
 		default:
