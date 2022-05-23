@@ -13,7 +13,8 @@ const persistConfig = {
 };
 const persistedReducer = persistReducer(persistConfig, reducer);
 
-// const store = createStore(reducer, applyMiddleware(thunk));  //  createStore is deprecated..
+//  createStore is deprecated..
+// const store = createStore(reducer, applyMiddleware(thunk));
 
 const store = configureStore({
 	reducer: persistedReducer,
