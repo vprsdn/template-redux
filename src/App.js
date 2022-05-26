@@ -17,7 +17,7 @@ const App = () => {
 		dispatch(getUser(userId))
 			.then((res) => {
 				//	If required, do something with the returned data..
-				// console.log(res);
+				console.log(res);
 			})
 			.catch((err) => {
 				console.log(err);
