@@ -4,4 +4,4 @@
 -   Redux toolkit and redux persist are included.
 ---
 
-# [Detailed post](https://dev.to/aydotvin/react-redux-walk-through-4il1)
+## <a href="https://dev.to/aydotvin/react-redux-walk-through-4il1" target="_blank">Detailed post</a>
